@@ -5,3 +5,17 @@ type Post @model @searchable {
 	price: Int
 	rating: Float
 }
+
+enum Code {
+	NOT_FOUND
+	NOT_ALLOWED
+}
+
+interface Employee {
+	id: ID!
+}
+
+type NormalEmployee implements Employee{
+	id: ID!
+	department: String!
+}

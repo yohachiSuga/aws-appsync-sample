@@ -54,16 +54,31 @@ export default class App extends Component {
   search = async () =>{
     console.log(this.state.keyword)
     try {
-      const ret = await API.graphql(graphqlOperation(searchPosts),{
+      const ret = await API.graphql(graphqlOperation(searchPosts,{
         filter:{
           or:[
-            // {content:{wildcard:"*" + this.state.keyword + "*"}},
+            {content:{wildcard:"*" + this.state.keyword + "*"}},
             {content:{match:this.state.keyword}}
           ]
-        }
-      })
+        },
+        limit:2
+      }))
 
       console.log(ret)
+
+      const ret2 = await API.graphql(graphqlOperation(searchPosts,{
+        filter:{
+          or:[
+            {content:{wildcard:"*" + this.state.keyword + "*"}},
+            {content:{match:this.state.keyword}}
+          ]
+        },
+        limit:2,
+        nextToken:ret.data.searchPosts.nextToken
+      }))
+      console.log(ret2)
+
+
     } catch (error) {
       console.log(error)
     }
