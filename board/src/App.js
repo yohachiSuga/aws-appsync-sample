@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { API, graphqlOperation } from 'aws-amplify';
-import { listPosts } from "./graphql/queries";
+import { listPosts,searchPosts } from "./graphql/queries";
 import { createPost } from "./graphql/mutations";
 import { onCreatePost } from "./graphql/subscriptions";
 export default class App extends Component {
@@ -11,7 +11,8 @@ export default class App extends Component {
     this.state ={
       posts:[],
       title:"",
-      content:""
+      content:"",
+      keyword:""
     }
   }
 
@@ -50,6 +51,24 @@ export default class App extends Component {
     }
   }
 
+  search = async () =>{
+    console.log(this.state.keyword)
+    try {
+      const ret = await API.graphql(graphqlOperation(searchPosts),{
+        filter:{
+          or:[
+            // {content:{wildcard:"*" + this.state.keyword + "*"}},
+            {content:{match:this.state.keyword}}
+          ]
+        }
+      })
+
+      console.log(ret)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
@@ -76,6 +95,11 @@ export default class App extends Component {
         <input value={this.state.content} name="content" onChange={this.onChange}></input>
         </div>
         <button onClick={this.createPost}>add</button>  
+        <div>
+          search content
+        <input value={this.state.keyword} name="keyword" onChange={this.onChange}></input>
+        </div>
+        <button onClick={this.search}>search</button>  
         {this.renderPost()}
       </div>
     );

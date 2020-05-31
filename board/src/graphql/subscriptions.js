@@ -1,57 +1,42 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreatePost = `subscription OnCreatePost {
-  onCreatePost {
-    id
-    title
-    content
-    price
-    rating
+export const onCreatePost = /* GraphQL */ `
+  subscription OnCreatePost {
+    onCreatePost {
+      id
+      title
+      content
+      price
+      rating
+      createdAt
+      updatedAt
+    }
   }
-}
 `;
-export const onUpdatePost = `subscription OnUpdatePost {
-  onUpdatePost {
-    id
-    title
-    content
-    price
-    rating
+export const onUpdatePost = /* GraphQL */ `
+  subscription OnUpdatePost {
+    onUpdatePost {
+      id
+      title
+      content
+      price
+      rating
+      createdAt
+      updatedAt
+    }
   }
-}
 `;
-export const onDeletePost = `subscription OnDeletePost {
-  onDeletePost {
-    id
-    title
-    content
-    price
-    rating
+export const onDeletePost = /* GraphQL */ `
+  subscription OnDeletePost {
+    onDeletePost {
+      id
+      title
+      content
+      price
+      rating
+      createdAt
+      updatedAt
+    }
   }
-}
-`;
-export const onCreateTodo = `subscription OnCreateTodo {
-  onCreateTodo {
-    id
-    title
-    content
-  }
-}
-`;
-export const onUpdateTodo = `subscription OnUpdateTodo {
-  onUpdateTodo {
-    id
-    title
-    content
-  }
-}
-`;
-export const onDeleteTodo = `subscription OnDeleteTodo {
-  onDeleteTodo {
-    id
-    title
-    content
-  }
-}
 `;
