@@ -5,3 +5,9 @@ type Post @model {
 	price: Int
 	rating: Float
 }
+
+type Todo @model {
+	id: ID!
+	title: String!
+	content: String!
+}

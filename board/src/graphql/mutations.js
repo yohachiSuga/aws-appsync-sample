@@ -31,3 +31,27 @@ export const deletePost = `mutation DeletePost($input: DeletePostInput!) {
   }
 }
 `;
+export const createTodo = `mutation CreateTodo($input: CreateTodoInput!) {
+  createTodo(input: $input) {
+    id
+    title
+    content
+  }
+}
+`;
+export const updateTodo = `mutation UpdateTodo($input: UpdateTodoInput!) {
+  updateTodo(input: $input) {
+    id
+    title
+    content
+  }
+}
+`;
+export const deleteTodo = `mutation DeleteTodo($input: DeleteTodoInput!) {
+  deleteTodo(input: $input) {
+    id
+    title
+    content
+  }
+}
+`;
